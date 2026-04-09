@@ -33,5 +33,11 @@ public class EmpleadoVentas extends Empleado {
         this.porcentajeComision = porcentajeComision;
     }
 
-
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "EmpleadoVentas{" +
+                "totalVentas=" + totalVentas +
+                ", porcentajeComision=" + porcentajeComision +
+                '}';
+    }
 }

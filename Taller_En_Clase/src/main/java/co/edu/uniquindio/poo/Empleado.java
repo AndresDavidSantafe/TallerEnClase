@@ -116,4 +116,17 @@ public abstract class Empleado {
     }
 
     public abstract float calcularSalarioBruto();
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Empleado{" +
+                "documento='" + documento + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", salarioBase=" + salarioBase +
+                ", categoriaEmpleado=" + categoriaEmpleado +
+                ", descuentoSalud=" + descuentoSalud +
+                ", descuentoPension=" + descuentoPension +
+                '}';
+    }
 }

@@ -32,5 +32,11 @@ public class EmpleadoTemporal extends Empleado{
         this.valorDia = valorDia;
     }
 
-
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "EmpleadoTemporal{" +
+                "diasTrabajados=" + diasTrabajados +
+                ", valorDia=" + valorDia +
+                '}';
+    }
 }

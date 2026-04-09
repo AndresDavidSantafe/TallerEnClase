@@ -9,7 +9,7 @@ public class EmpleadoPlanta extends Empleado{
 
     private Empleado tipoEmpleado;
 
-    public EmpleadoPlanta(String nombre, String documento, int edad, float descuentoSalud, float salarioBase, float descuentoPension, String cargo, int horasExtra, float valorHoraExtra, float auxilioTransporrte) {
+    public EmpleadoPlanta(String nombre, String documento, int edad, float descuentoSalud, float salarioBase, float descuentoPension, String cargo, int horasExtra, float valorHoraExtra, float auxilioTransporte) {
         super(nombre, documento, edad, descuentoSalud, salarioBase, descuentoPension);
         this.cargo = cargo;
         this.horasExtra = horasExtra;
@@ -53,5 +53,16 @@ public class EmpleadoPlanta extends Empleado{
 
     public void setValorHoraExtra(float valorHoraExtra) {
         this.valorHoraExtra = valorHoraExtra;
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "EmpleadoPlanta{" +
+                "cargo='" + cargo + '\'' +
+                ", horasExtra=" + horasExtra +
+                ", valorHoraExtra=" + valorHoraExtra +
+                ", auxilioTransporte=" + auxilioTransporte +
+                ", tipoEmpleado=" + tipoEmpleado +
+                '}';
     }
 }

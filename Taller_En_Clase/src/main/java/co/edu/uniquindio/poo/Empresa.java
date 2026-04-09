@@ -9,7 +9,7 @@ public class Empresa {
 
     private ArrayList<Empleado> listaEmpleados;
     private ArrayList<EmpleadoPlanta> listEmpleadosPlanta;
-    private ArrayList<EmpleadoVentas> listEmpleadosVenta;
+    private ArrayList<EmpleadoVentas> listEmpleadosVentas;
     private ArrayList<EmpleadoTemporal> listEmpleadoTemporal;
 
     public Empresa(String nit, ArrayList<Empleado> listEmpleadosPlanta, String nombre, ArrayList<Empleado> listEmpleadosVenta, ArrayList<Empleado> listEmpleadoTemporal) {
@@ -18,12 +18,11 @@ public class Empresa {
         listEmpleadosPlanta = new ArrayList<>();
         listEmpleadosVenta = new ArrayList<>();
         listEmpleadoTemporal = new ArrayList<>();
+        listaEmpleados= new ArrayList<>();
     }
 
-    public Empresa(String nit, String nombre, ArrayList<Empleado> listEmpleados) {
-        this.nit = nit;
-        this.nombre = nombre;
-        this.listEmpleadosPlanta = listEmpleadosPlanta;
+    public Empresa() {
+
     }
 
     public boolean buscarEmpleadoByDocumento(String documento){
@@ -34,13 +33,66 @@ public class Empresa {
         }
         return false;
     }
+    public boolean agregarEmpleadoPlanta(String nombre, String documento, int edad, float descuentoSalud, float salarioBase, float descuentoPension, String cargo, int horasExtra, float valorHoraExtra, float auxilioTransporte) {
+        EmpleadoPlanta newEmpleadoPlanta= new EmpleadoPlanta(nombre, documento, edad, descuentoSalud, salarioBase, descuentoPension, cargo, horasExtra, valorHoraExtra, auxilioTransporte);
 
-    public boolean agregarEmpleado() {
-
-            if(){
-
+        if(buscarEmpleadoByDocumento(documento)==false){
+            listEmpleadosPlanta.add(newEmpleadoPlanta);
+            listaEmpleados.add(newEmpleadoPlanta);
+            return true;
         }
+        return false;
     }
+    public boolean agregarEmpleadoVentas(String nombre, String documento, int edad, float descuentoSalud, float salarioBase, float descuentoPension, float totalVentas, float porcentajeComision) {
+        EmpleadoVentas newEmpleadoVentas= new EmpleadoVentas(nombre, documento, edad, descuentoSalud, salarioBase, descuentoPension, totalVentas, porcentajeComision);
+
+        if(buscarEmpleadoByDocumento(documento)==false){
+            listEmpleadosVentas.add(newEmpleadoVentas);
+            listaEmpleados.add(newEmpleadoVentas);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean agregarEmpleadoTemporal(String nombre, String documento, int edad, float descuentoSalud, float salarioBase, float descuentoPension, int diasTrabajados, float valorDia) {
+        EmpleadoTemporal newEmpleadoTemporal= new EmpleadoTemporal(nombre, documento, edad, descuentoSalud, salarioBase, descuentoPension, diasTrabajados, valorDia);
+
+        if(buscarEmpleadoByDocumento(documento)==false){
+            listEmpleadoTemporal.add(newEmpleadoTemporal);
+            listaEmpleados.add(newEmpleadoTemporal);
+            return true;
+        }
+        return false;
+    }
+
+
+
+    public boolean agregarEmpleado(Empleado newEmpleado) {
+        if(buscarEmpleadoByDocumento(newEmpleado.getDocumento())==false){
+            listaEmpleados.add(newEmpleado);
+            if(newEmpleado instanceof EmpleadoPlanta){
+                listEmpleadosPlanta.add((EmpleadoPlanta)newEmpleado);
+            }else if(newEmpleado instanceof EmpleadoVentas){
+                listEmpleadosVentas.add((EmpleadoVentas)newEmpleado);
+            }else{
+                listEmpleadoTemporal.add((EmpleadoTemporal)newEmpleado);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public String mostrarEmpleados(){
+        String mensaje="";
+        for(Empleado empleado: listaEmpleados){
+            mensaje+=empleado+"\n";
+        }
+        return mensaje;
+    }
+
+
+
+
 
     public String getNit() {
         return nit;
@@ -88,5 +140,17 @@ public class Empresa {
 
     public void setListEmpleadoTemporal(ArrayList<EmpleadoTemporal> listEmpleadoTemporal) {
         this.listEmpleadoTemporal = listEmpleadoTemporal;
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Empresa{" +
+                "nit='" + nit + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", listaEmpleados=" + listaEmpleados +
+                ", listEmpleadosPlanta=" + listEmpleadosPlanta +
+                ", listEmpleadosVentas=" + listEmpleadosVentas +
+                ", listEmpleadoTemporal=" + listEmpleadoTemporal +
+                '}';
     }
 }
